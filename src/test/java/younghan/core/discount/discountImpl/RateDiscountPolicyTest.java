@@ -1,0 +1,41 @@
+package younghan.core.discount.discountImpl;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import younghan.core.member.Grade;
+import younghan.core.member.Member;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class RateDiscountPolicyTest {
+
+    RateDiscountPolicy discountPolicy = new RateDiscountPolicy();
+
+    @Test
+    @DisplayName("VIP 할인되어야 한다")
+    void discountVIP() {
+
+        // given
+        Member member = new Member(1L, "memberVIP", Grade.VIP);
+
+        // when
+        int discount = discountPolicy.discount(member, 10_000);
+
+        // then
+        assertThat(discount).isEqualTo(1_000);
+    }
+
+    @Test
+    @DisplayName("VIP 아니면 할인이 되서는 안된다.")
+    void discountBASIC() {
+
+        // given
+        Member member = new Member(1L, "memberBASIC", Grade.BASIC);
+
+        // when
+        int discount = discountPolicy.discount(member, 10_000);
+
+        // then
+        assertThat(discount).isEqualTo(0);
+    }
+}
