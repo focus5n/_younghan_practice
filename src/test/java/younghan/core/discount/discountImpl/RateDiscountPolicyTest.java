@@ -1,7 +1,10 @@
 package younghan.core.discount.discountImpl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import younghan.core.config.AppConfig;
+import younghan.core.discount.DiscountPolicy;
 import younghan.core.member.Grade;
 import younghan.core.member.Member;
 
@@ -9,7 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RateDiscountPolicyTest {
 
-    RateDiscountPolicy discountPolicy = new RateDiscountPolicy();
+    DiscountPolicy discountPolicy;
+
+    @BeforeEach
+    public void beforEach() {
+        AppConfig appConfig = new AppConfig();
+        discountPolicy = appConfig.discountPolicy();
+    }
 
     @Test
     @DisplayName("VIP 할인되어야 한다")

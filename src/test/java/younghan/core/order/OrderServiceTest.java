@@ -1,18 +1,25 @@
 package younghan.core.order;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import younghan.core.config.AppConfig;
 import younghan.core.member.Grade;
 import younghan.core.member.Member;
 import younghan.core.member.MemberService;
-import younghan.core.member.memberImpl.MemberServiceImpl;
-import younghan.core.order.OrderImpl.OrderServiceImpl;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
     
     @Test
     @DisplayName("주문 생성")

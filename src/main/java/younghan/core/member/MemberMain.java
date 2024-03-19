@@ -1,13 +1,14 @@
 package younghan.core.member;
 
-import younghan.core.member.memberImpl.MemberServiceImpl;
+import younghan.core.config.AppConfig;
 
 public class MemberMain {
 
     public static void main(String[] args) {
 
         // MemberServiceTest 참조
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
         Member memberA = new Member(1L, "memberA", Grade.VIP);
 
         memberService.join(memberA);
