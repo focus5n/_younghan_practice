@@ -28,10 +28,11 @@ class RateDiscountPolicyTest {
         Member member = new Member(1L, "memberVIP", Grade.VIP);
 
         // when
-        int discount = discountPolicy.discount(member, 10_000);
+        int discount = discountPolicy.discount(member, 20_000);
+        System.out.println("DISCOUNT : " + discount);
 
         // then
-        assertThat(discount).isEqualTo(1_000);
+        assertThat(discount).isEqualTo(2_000);
     }
 
     @Test
@@ -43,6 +44,7 @@ class RateDiscountPolicyTest {
 
         // when
         int discount = discountPolicy.discount(member, 10_000);
+        System.out.println("DISCOUNT : " + discount);
 
         // then
         assertThat(discount).isEqualTo(0);
