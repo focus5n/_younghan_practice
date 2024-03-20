@@ -29,9 +29,9 @@ class RateDiscountPolicyTest {
 
         // when
         int discount = discountPolicy.discount(member, 20_000);
-        System.out.println("DISCOUNT : " + discount);
 
         // then
+        System.out.println("DISCOUNT : " + discount);
         assertThat(discount).isEqualTo(2_000);
     }
 
@@ -44,9 +44,9 @@ class RateDiscountPolicyTest {
 
         // when
         int discount = discountPolicy.discount(member, 10_000);
-        System.out.println("DISCOUNT : " + discount);
 
         // then
+        System.out.println("DISCOUNT : " + discount);
         assertThat(discount).isEqualTo(0);
     }
 }
