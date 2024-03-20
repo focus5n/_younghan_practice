@@ -8,11 +8,11 @@ import younghan.core.order.OrderService;
 
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    MemberRepository memberRepository;
+    DiscountPolicy discountPolicy;
 
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
+    public OrderServiceImpl(MemberRepository memberService, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberService;
         this.discountPolicy = discountPolicy;
     }
 
