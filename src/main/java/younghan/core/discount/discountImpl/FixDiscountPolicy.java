@@ -1,28 +1,26 @@
 package younghan.core.discount.discountImpl;
 
+import org.springframework.stereotype.Component;
 import younghan.core.discount.DiscountPolicy;
 import younghan.core.member.Grade;
 import younghan.core.member.Member;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy {
-
-    private final int DISCOUNT_FIX_AMOUNT = 1_000;
-    private final int DISCOUNT_ZERO = 0;
-    private final int DISCOUNT_DEFAULT = 0;
 
     @Override
     public int discount(Member member, int price) {
 
         if (member.getGrade() == Grade.VIP) {
-            return DISCOUNT_FIX_AMOUNT;
+            return 1_000;
         }
 
         else if (member.getGrade() == Grade.BASIC) {
-            return DISCOUNT_ZERO;
+            return 0;
         }
 
         else {
-            return DISCOUNT_DEFAULT;
+            return 0;
         }
     }
 }

@@ -1,22 +1,23 @@
 package younghan.core.discount.discountImpl;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 import younghan.core.discount.DiscountPolicy;
 import younghan.core.member.Grade;
 import younghan.core.member.Member;
 
+@Component
+@Primary
 public class RateDiscountPolicy implements DiscountPolicy {
-
-    private int DISCOUNT_PERCENT = 10;
-    private int DISCOUNT_DEFAULT = 0;
 
     @Override
     public int discount(Member member, int price) {
 
         if (member.getGrade() == Grade.VIP) {
-            int calc = price * DISCOUNT_PERCENT / 100;
-            return calc;
+            int DISCOUNT_PERCENT = 10;
+            return price * DISCOUNT_PERCENT / 100;
         } else {
-            return price * DISCOUNT_DEFAULT / 100;
+            return 0;
         }
     }
 }
