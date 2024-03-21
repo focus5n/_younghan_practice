@@ -1,7 +1,7 @@
 package younghan.core.singleton.service;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class StatelessService {
     
@@ -9,7 +9,7 @@ public class StatelessService {
 
     // 값을 바로 반환하거나, ThreadLocal 사용해라.
     public Map<String, Object> order(String name, int price) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new ConcurrentHashMap<>();
         map.put("name", name);
         map.put("price", price);
 
