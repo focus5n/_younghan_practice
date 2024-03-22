@@ -30,6 +30,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	// Inject
+	implementation 'javax.inject:javax.inject:1'
 }
 
 tasks.named('test') {
