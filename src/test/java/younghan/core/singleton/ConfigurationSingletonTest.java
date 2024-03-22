@@ -20,7 +20,7 @@ public class ConfigurationSingletonTest {
 
         MemberServiceImpl memberService = context.getBean("memberService", MemberServiceImpl.class);
         OrderServiceImpl orderService = context.getBean("orderService", OrderServiceImpl.class);
-        MemberRepository memberRepository = context.getBean("memberRepository", MemberRepository.class);
+        MemberRepository memberRepository = context.getBean("memoryMemberRepository", MemberRepository.class);
 
         MemberRepository memberRepository1 = memberService.getMemberRepository();
         MemberRepository memberRepository2 = orderService.getMemberRepository();

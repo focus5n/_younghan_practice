@@ -1,6 +1,6 @@
 package younghan.core.order.OrderImpl;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import younghan.core.discount.DiscountPolicy;
 import younghan.core.member.Member;
@@ -9,11 +9,15 @@ import younghan.core.order.Order;
 import younghan.core.order.OrderService;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(@Qualifier("memberRepository") MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
